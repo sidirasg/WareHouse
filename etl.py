@@ -4,18 +4,34 @@ from sql_queries import copy_table_queries, insert_table_queries
 
 
 def load_staging_tables(cur, conn):
+    """
+    Load tne saging table
+    :param cur:
+    :param conn:
+    :return:
+    """
     for query in copy_table_queries:
         cur.execute(query)
         conn.commit()
 
 
 def insert_tables(cur, conn):
+    """
+    inset tables to database
+    :param cur:
+    :param conn:
+    :return:
+    """
     for query in insert_table_queries:
         cur.execute(query)
         conn.commit()
 
 
 def main():
+    """
+    the Main Function
+
+    """
     config = configparser.ConfigParser()
     config.read('dwh.cfg')
 
